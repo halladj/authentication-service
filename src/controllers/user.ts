@@ -54,11 +54,12 @@ export const createUserController = async (req:Request, res:Response) => {
   }
 
   const lisenceKey = GenerateLicenseKey(student_id);
+  console.log(student_id)
 
   const user = new User({
     first_name:firstname, 
     last_name: lastname, 
-    student_id: student_id,
+    persons_id: student_id,
     licenseKey: lisenceKey,
     role      : "visitor"
   });
