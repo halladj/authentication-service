@@ -16,15 +16,15 @@ export const verificationController= async (req: Request, res: Response) => {
 
   const user= await User.findOne({student_id: agentIdentifier});
   if ( user === null ){
-    res.status(402);
-    res.json({message: "Error: Wrong Identifier provided."});
+    res.status(403);
+    res.json({message: "Error: Can not find user"});
     return;
 
   }
   const lisenceKey = user.licenseKey;
   if(lisenceKey !== lisence){
     res.statusCode = 421;
-    res.json({ message: "Error: Wrong Lisence Key provided." });
+    res.json({ message: "Error: Can not verify" });
     return;
   }
 
