@@ -1,8 +1,5 @@
 import * as crypto from "crypto"
-
-
 export const { privateKey, publicKey } = crypto.generateKeyPairSync('ed25519')
-//TODO: store this somewhere.
 
 
 //const signingKey= privateKey.export({ 
@@ -48,6 +45,8 @@ export const VerifyLisenceKey = (licenseKey: string):{valid:boolean, data:string
   const valid = crypto.verify(null, Buffer.from(data), publicKey, signature)
   return { valid, data};
 }
+
+
 // Split the license key by delimiter
 //
 //

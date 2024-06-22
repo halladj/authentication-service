@@ -21,6 +21,7 @@ export const verificationController= async (req: Request, res: Response) => {
     return;
 
   }
+
   const lisenceKey = user.licenseKey;
   if(lisenceKey !== lisence){
     res.statusCode = 421;
@@ -28,10 +29,10 @@ export const verificationController= async (req: Request, res: Response) => {
     return;
   }
 
+  console.log("Success: Verified");
   res.statusCode = 200;
   res.json({ message: "Success: Verified Successfully" });
 
-  console.log(lisenceKey);
 
 }
 
