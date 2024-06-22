@@ -3,8 +3,9 @@ import { User } from "../models/User";
 import {GenerateLicenseKey} from "../encryption";
 
 
-export const signinController = async (req: Request, res: Response) => {
-  const agentIdentifier:string | undefined = req.body.id    || undefined;
+export const verificationController= async (req: Request, res: Response) => {
+
+  const agentIdentifier:string | undefined = req.body.id     || undefined;
   const lisence        :string | undefined = req.body.lisence|| undefined;
 
   if ( agentIdentifier === undefined || lisence === undefined){
@@ -40,6 +41,7 @@ export const createUserController = async (req:Request, res:Response) => {
   const firstname :string | undefined = req.body.firstname || undefined;
   const lastname  :string | undefined = req.body.lastname  || undefined;
   const student_id:string | undefined = req.body.studentid || undefined;
+  console.log(req.body)
 
   if ( 
       firstname  === undefined || 
@@ -54,10 +56,11 @@ export const createUserController = async (req:Request, res:Response) => {
   const lisenceKey = GenerateLicenseKey(student_id);
 
   const user = new User({
-    firstname :firstname, 
-    lastname  : lastname, 
+    first_name:firstname, 
+    last_name: lastname, 
     student_id: student_id,
-    licenseKey: lisenceKey
+    licenseKey: lisenceKey,
+    role      : "visitor"
   });
 
   console.log(user);

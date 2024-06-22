@@ -3,7 +3,7 @@ import * as bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import {Authenticate} from "./middleware/auth";
-import {signinController,monitoringController, createUserController} from "./controllers/user";
+import {monitoringController, createUserController, verificationController} from "./controllers/user";
 dotenv.config()
 
 
@@ -27,7 +27,7 @@ app.use(bodyParser.json())
  
 
 app.post('/user', createUserController);
-app.post('/verify', signinController);
+app.post('/verify', verificationController);
 
 // Protected route.
 app.post('/monitoring', [Authenticate, monitoringController]);
