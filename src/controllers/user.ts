@@ -14,7 +14,7 @@ export const verificationController= async (req: Request, res: Response) => {
     return;
   }
 
-  const user= await User.findOne({student_id: agentIdentifier});
+  const user= await User.findOne({persons_id: agentIdentifier});
   if ( user === null ){
     res.status(403);
     res.json({message: "Error: Can not find user"});
